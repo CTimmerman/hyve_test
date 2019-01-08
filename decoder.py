@@ -35,6 +35,10 @@ def encode(byte_str):
             i += 1
             continue
         # Seen byte? Encode seen part.
+        """
+        >>> encode(b"wut wut")
+        b'\x00w\x00u\x00t\x00 \x04\x03'
+        """
         pos = i-p
         length = 1
         while byte_str[pos:pos+length] == byte_str[pos:pos+length]:
@@ -95,6 +99,8 @@ def test():
     b'Tai Tbo'
     >>> decode(encode(b'Tso Tho'))
     b'Tso Tho'
+    >>> encode(b"wut wut")
+    b'\x00w\x00u\x00t\x00 \x04\x03'
     """
 
 if __name__ == "__main__":
