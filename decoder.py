@@ -73,17 +73,22 @@ def main(incoming=sys.stdin):
     else:
         encoded = encode(result)
     print(encoded, file=sys.stderr)
-    print(decode_byte_stream(io.BytesIO(encoded)))
 
 def test():
-    data = [0x0, 0x61, 0x1, 0x1, 0x0, 0x62, 0x3, 0x2, 0x3, 0x3]  # b'aabaabaa'
-    data = [0x00, 0x20, 0x00, 0x2A, 0x02, 0x01, 0xFF]  # b' * ?'
-    
     """
+    >>> decode(bytes([0x0, 0x61, 0x1, 0x1, 0x0, 0x62, 0x3, 0x2, 0x3, 0x3]))
+    b'aabaabaa'
+    >>> decode(bytes([0x00, 0x20, 0x00, 0x2A, 0x02, 0x01, 0xFF])
     b' * ?'
-    b'\x00 \x00*\x00 \x00?'
+    >>> decode(encode(b'aabaabaa'))
+    b'aabaabaa'
+    >>> decode(encode(b'banana'))
+    b'banana'
+    >>> decode(encode(b'bananas'))
+    b'bananas'
+    >>> decode(encode_simple(b'badass'))
+    b'badass'
     """
-    incoming = io.BytesIO(bytes(data))
-    main(incoming)
 
-if __name__ == "__main__": test()
+
+if __name__ == "__main__": main()
