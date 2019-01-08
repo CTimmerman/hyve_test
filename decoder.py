@@ -36,8 +36,8 @@ def encode(byte_str):
             continue
         # Seen byte? Encode seen part.
         length = 1
-        while length < i and i+length < len(byte_str) \
-            and byte_str[p:p+length] == byte_str[i:i+length]:
+        while length < i-1 and i+length < len(byte_str) \
+            and byte_str[p:p+length] == byte_str[i-p:i+length]:
                 length += 1
         result.extend((i-p, length))
         i += length
@@ -90,4 +90,6 @@ def test():
     b'badass'
     """
 
-if __name__ == "__main__": main()
+if __name__ == "__main__":
+    import doctest; doctest.testmod()
+    #main()
