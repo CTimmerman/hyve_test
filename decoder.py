@@ -88,6 +88,8 @@ def test():
     b'bananas'
     >>> decode(encode_simple(b'badass'))
     b'badass'
+	>>> decode(encode(b'Tai Tbo'))
+	b'Tai Tbo'
     """
 
 if __name__ == "__main__":
