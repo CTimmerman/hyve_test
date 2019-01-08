@@ -75,10 +75,10 @@ def main(incoming=sys.stdin):
     print(encoded, file=sys.stderr)
 
 def test():
-    """
+    """Run these using: python -m doctest decoder.py
     >>> decode(bytes([0x0, 0x61, 0x1, 0x1, 0x0, 0x62, 0x3, 0x2, 0x3, 0x3]))
     b'aabaabaa'
-    >>> decode(bytes([0x00, 0x20, 0x00, 0x2A, 0x02, 0x01, 0xFF])
+    >>> decode(bytes([0x00, 0x20, 0x00, 0x2A, 0x02, 0x01, 0xFF]))
     b' * ?'
     >>> decode(encode(b'aabaabaa'))
     b'aabaabaa'
@@ -89,6 +89,5 @@ def test():
     >>> decode(encode_simple(b'badass'))
     b'badass'
     """
-
 
 if __name__ == "__main__": main()
