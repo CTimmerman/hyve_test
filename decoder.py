@@ -35,11 +35,12 @@ def encode(byte_str):
             i += 1
             continue
         # Seen byte? Encode seen part.
+        pos = i-p
         length = 1
-        while length < i-1 and i+length < len(byte_str) \
-            and byte_str[p:p+length] == byte_str[i-p:i+length]:
+        while pos+length < i \
+            and byte_str[pos:pos+length] == byte_str[pos:pos+length]:
                 length += 1
-        result.extend((i-p, length))
+        result.extend((pos, length))
         i += length
     return bytes(result)
 
