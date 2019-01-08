@@ -91,6 +91,8 @@ def test():
     b'badass'
     >>> decode(encode(b'Tai Tbo'))
     b'Tai Tbo'
+    >>> decode(encode(b'Tso Tho'))
+    b'Tso Tho'
     """
 
 if __name__ == "__main__":
