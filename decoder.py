@@ -35,20 +35,17 @@ def encode(byte_str):
             i += 1
             continue
         # Seen byte? Encode seen part.
-        """
-        >>> encode(b"wut wut")
-        b'\x00w\x00u\x00t\x00 \x04\x03'
-        """
         pos = i-p
         length = 1
-        while byte_str[pos:pos+length] == byte_str[pos:pos+length]:
+        while byte_str[p:p+length] == byte_str[i:i+length]:
             length += 1
-            if pos+length >= i:
-                length -= 1
-                break
+            if p+length >= i: break
+        length -= 1
         result.extend((pos, length))
         i += length
     return bytes(result)
+
+#print(encode(b"Tso Tho")); sys.exit()  # Code doesn't like doctest, so test oldschool.
 
 def encode_simple(byte_str):
     result = []
@@ -100,9 +97,9 @@ def test():
     >>> decode(encode(b'Tso Tho'))
     b'Tso Tho'
     >>> encode(b"wut wut")
-    b'\x00w\x00u\x00t\x00 \x04\x03'
+    b'\\x00w\\x00u\\x00t\\x00 \\x04\\x03'
     """
 
 if __name__ == "__main__":
-    #import doctest; doctest.testmod()
-    main()
+    import doctest; doctest.testmod()
+    #main()
