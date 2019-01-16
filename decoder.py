@@ -1,5 +1,6 @@
 """Hyve decoder/encoder
 2019-01-08 v1.0 by Cees Timmerman
+2019-01-17 v1.1 Moved doctest code to test()
 """
 import io, os, sys
 
@@ -99,7 +100,9 @@ def test():
     >>> encode(b"wut wut")
     b'\\x00w\\x00u\\x00t\\x00 \\x04\\x03'
     """
+    import doctest
+    doctest.testmod()
 
 if __name__ == "__main__":
-    #import doctest; doctest.testmod()
+    #test()
     main()
