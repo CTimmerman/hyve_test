@@ -101,7 +101,7 @@ def test():
     b'\\x00w\\x00u\\x00t\\x00 \\x04\\x03'
     """
     import doctest
-    return doctest.testmod() # TestResults(failed=0, attempted=9)
+    return doctest.testmod()  # TestResults(failed=0, attempted=9)
 
 if __name__ == "__main__":
     #print("{t.failed}/{t.attempted} tests failed.".format(t=test()))  # If you want test numbers without parsing stderr.
